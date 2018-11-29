@@ -21,7 +21,7 @@ config = {
     'version': '0.0.1',
     'packages': ['qproxy'],
     'scripts': [],
-    'name': 'dataman',
+    'name': 'qproxy',
     # TODO: unify with requirements.txt
     'install_requires': [str(ir.req) for ir in parse_requirements('requirements.txt', session=pip.download.PipSession())],
 }

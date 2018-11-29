@@ -10,7 +10,7 @@ from qproxy.http import HttpClientSingleton
 from functools import partial
 
 # TODO: Codegen
-_OPERATIONS = {
+OPERATIONS = {
     'qproxy/listqueues' : True,
     'qproxy/getqueue' : False,
     'qproxy/createqueue' : False,
@@ -41,7 +41,7 @@ class Client(object):
         self.secure = secure
         self.version = version
 
-        for op_path, streaming in _OPERATIONS.iteritems():
+        for op_path, streaming in OPERATIONS.iteritems():
             # TODO: ugly for now, cleaner when code gened
             op = op_path.split("/")[-1]
             path = self._path(op_path)
@@ -98,7 +98,7 @@ class Client(object):
                 HttpClientSingleton.instance().sync
 
         if not async:
-            resp = client.fetch(path, **kwargs).result()
+            resp = client.fetch(path, **kwargs)
         else:
             resp = yield client.fetch(path, **kwargs)
         raise tornado.gen.Return(resp)
