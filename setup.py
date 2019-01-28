@@ -4,8 +4,8 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from pip.req import parse_requirements
-import pip.download
+with open('requirements.txt') as f:
+    install_requires = f.read().strip().split("\n")
 
 config = {
     'description': 'Tornado-based QProxy Client',
@@ -23,7 +23,7 @@ config = {
     'scripts': [],
     'name': 'qproxy',
     # TODO: unify with requirements.txt
-    'install_requires': [str(ir.req) for ir in parse_requirements('requirements.txt', session=pip.download.PipSession())],
+    'install_requires': install_requires,
 }
 
 setup(**config)
