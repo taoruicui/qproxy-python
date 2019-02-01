@@ -59,9 +59,8 @@ class Client(object):
         auth = params.pop('auth', None)
 
         params['method'] = method
-        # These are the default tornado timeout values.
-        params['request_timeout'] = params.get('request_timeout', 20.0)
-        params['connect_timeout'] = params.get('connect_timeout', 20.0)
+        params['request_timeout'] = params.get('request_timeout', 2.0)
+        params['connect_timeout'] = params.get('connect_timeout', 2.0)
 
         if 'use_curl' in params:
             params['prepare_curl_callback'] = lambda c: c.setopt(pycurl.TCP_NODELAY, 1)
