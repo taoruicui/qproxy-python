@@ -10,6 +10,7 @@ upload_egg:
     - curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
     - python get-pip.py
     - pip install pyOpenSSL ndg-httpsclient pyasn1
+    - pip install requests[security]
     - pip install tornado==4.5.1
     - pip install .
     - pip show $CI_PROJECT_NAME
@@ -20,3 +21,4 @@ upload_egg:
   #   - twine upload --repository-url $PYPI_SERVER --username $USERNAME --password $PASSWORD dist/*
   # only:
   #   - master
+  
